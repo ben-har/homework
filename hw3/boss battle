@@ -1,0 +1,151 @@
+using System.Numerics;
+
+namespace boss_battle
+{
+    public class Math
+    {
+        public class HealthValue
+        {
+            private int healthOne = 10;
+            private int healthTwo = 15;
+
+            public HealthValue(int healthOne, int healthTwo)
+            {
+                this.healthOne = healthOne;
+                this.healthTwo = healthTwo;
+            }
+
+            public int HealthOne
+            {
+                get { return this.healthOne; }
+                set { this.healthOne = value; }
+            }
+            public int HealthTwo
+            {
+                get { return this.healthTwo; }
+                set { this.healthTwo = value; }
+            }
+        }
+       
+        
+
+        public static void Main()
+        {
+            // Initialize health values
+            HealthValue myHealthValue = new HealthValue(10, 15);
+
+
+            // Number guessing game
+            int playerIntOne;
+            int playerIntTwo;
+            int Round = 1;
+            int Distance = -1;
+            int Timer = 0;
+            Console.Write("player one how far is it from he city 1-100 ");
+            Distance = int.Parse(Console.ReadLine());
+            Console.Clear();
+
+
+
+
+
+            do
+            {
+                Console.WriteLine("Player One guess the number between 1-100");
+                string playerResponse = Console.ReadLine();
+                playerIntOne = Convert.ToInt32(playerResponse);
+
+
+                if (playerIntOne < Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("you undershot! ");
+                    myHealthValue.HealthTwo--;
+                    Console.WriteLine("round " + Round + " manticore " + myHealthValue.HealthOne + "/10 " + " city " + myHealthValue.HealthTwo + "/15");
+                    Round++;
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    
+
+
+                }
+                if (playerIntOne > Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("you overshot! ");
+                    myHealthValue.HealthTwo--;
+                    Console.WriteLine("round " + Round + " manticore " + myHealthValue.HealthOne + "/10 " + " city " + myHealthValue.HealthTwo + "/15");
+                    Round++;
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                }
+                if (playerIntOne == Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("you hit the ship! ");
+                    myHealthValue.HealthOne--;
+                    Console.WriteLine("manicore HP " + myHealthValue.HealthOne + "/10");
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    
+                }
+                if(myHealthValue.HealthOne == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("the manticore has been destroyed!");
+                    Thread.Sleep(5000);
+                    break;
+                }
+
+                Console.WriteLine("Player two guess the number between 1-100");
+                string playerResponseTwo = Console.ReadLine();
+                playerIntTwo = Convert.ToInt32(playerResponseTwo);
+                if (playerIntTwo < Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("you undershot! ");
+                    myHealthValue.HealthTwo--;
+                    Console.WriteLine("round " + Round + " manticore " + myHealthValue.HealthOne + "/10 " + " city " + myHealthValue.HealthTwo + "/15");
+                    Round++;
+                    Thread.Sleep(2000);
+                    Console.Clear();
+
+
+
+                }
+                if (playerIntTwo > Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("you overshot ");
+                    myHealthValue.HealthTwo--;
+                    Console.WriteLine("round " + Round + " manticore " + myHealthValue.HealthOne + "/10 " + " city " + myHealthValue.HealthTwo + "/15");
+                    Round++;
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                }
+                if (playerIntTwo == Distance)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("you hit the target! ");
+                    myHealthValue.HealthOne --;
+                    Console.WriteLine("manicore HP " + myHealthValue.HealthOne + "/10");
+                    Thread.Sleep(2000);
+                    Console.Clear();
+
+                    
+                }
+                if (myHealthValue.HealthOne == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("the manticore has been destroyed!");
+                    Thread.Sleep(5000);
+                    break;
+                }
+            }
+            while (myHealthValue.HealthOne > 0 || myHealthValue.HealthTwo > 0);
+
+            
+            
+        }
+    }   
+}
