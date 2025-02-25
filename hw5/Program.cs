@@ -1,4 +1,6 @@
-﻿namespace vehicles_cars
+using System.Reflection;
+
+namespace Vehicle
 {
     public class Vehicle
     {
@@ -37,7 +39,7 @@
         }
         public override string ToString()
         {
-            return $"Model:{model},Year:{year}, Make:{make}";
+            return $"vehicle: Model:{model},Year:{year}, Make:{make}";
 
 
         }
@@ -51,15 +53,15 @@
     }
     public class Car : Vehicle
     {
-        private bool numberOfDoors;
+        private int numberOfDoors;
 
-        public bool NumberOfDoors
+        public int NumberOfDoors
         {
             get { return this.numberOfDoors; }
             set { this.numberOfDoors = value; }
 
         }
-        public Car(string make, string model, int year, bool NumberOfDoors)
+        public Car(string make, string model, int year, int numberOfDoors)
             : base(make, model, year)
         {
             NumberOfDoors = numberOfDoors;
@@ -67,8 +69,12 @@
 
 
         }
-        
-        
+
+
+        public override string ToString()
+        {
+            return $"Car: Model:{Model},Year:{Year}, Make:{Make},The car has {NumberOfDoors} doors";
+        }
 
 
     }
@@ -82,11 +88,17 @@
             set { this.hasSideCar = value; }
         }
 
-        public MotorCycle(string make, string model, int year, bool HasSideCar)
-            : base(make, model , year)
+        public MotorCycle(string make, string model, int year, bool hasSideCar)
+            : base(make, model, year)
         {
             HasSideCar = hasSideCar;
 
+
+        }
+        public override string ToString()
+        {
+
+            return $"Motorcycle:  Model:{Model},Year:{Year}, Make:{Make},Does the it have a side car:{HasSideCar}";
 
         }
     }
@@ -96,14 +108,14 @@
         {
             Vehicle myvehicle = new Vehicle("Honda", "Bug", 1940);
 
-            Car mycar = new Car("Honda", "Bug", 1940, true);
+            Car mycar = new Car("Honda", "Bug", 1940, 5);
 
-            MotorCycle mymotorcycle = new MotorCycle("Honda", "Bug", 1940, false  );
+            MotorCycle mymotorcycle = new MotorCycle("Honda", "Bug", 1930, true);
 
-            Console.WriteLine(mymotorcycle.HasSideCar);
+            Console.WriteLine(mymotorcycle.ToString());
 
-            Console.WriteLine(mycar.NumberOfDoors);
-            
+            Console.WriteLine( mycar.ToString());
+
             Console.WriteLine(myvehicle.ToString());
 
 
@@ -111,9 +123,6 @@
         }
     }
 }
-
-
-
 
 
 
