@@ -1,0 +1,102 @@
+using System;
+using Employees_Manager;
+
+namespace Employees_Manager
+{
+    public class Employees
+    {
+        private int salerly;
+        private string name;
+
+        public int Salerly
+        {
+            get{ return this.salerly; }
+            set {this.salerly = value;}
+        }
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+
+        }
+
+        public Employees(string Name, int Salerly) 
+        {
+            this.name = Name;
+            this.salerly = Salerly;
+
+
+        }
+        public override string ToString()
+        {
+            return $"Name {Name},this employees pay is {Salerly}";
+
+        }
+    }
+    public class Manager : Employees
+    {
+        private int numOfemployees;
+
+        public int NumOfemployees
+        {
+            get { return this.numOfemployees; }
+            set { this.numOfemployees = value; }
+        }
+
+        public Manager(string Name, int Salerly, int NumOfemployees)
+                : base(Name, Salerly)
+        {
+            this.numOfemployees = NumOfemployees;
+
+
+        }
+
+        public override string ToString()
+        {
+            return $" Name {Name},this employees pay is { Salerly }, Number of employees managed is {NumOfemployees} ";
+
+        }
+
+
+
+    }
+    public class engineer : Employees
+    {
+        private string specialization;
+
+        public string Specialization
+        {
+            get { return this.specialization; }
+            set { this.Specialization = value; }
+        }
+        public engineer(string Name, int Salerly,string Specialization)
+            :base(Name, Salerly) 
+        {
+            this.specialization = Specialization;
+        }
+        public override string ToString()
+        {
+            return $"Name {Name},this employees pay is {Salerly}, this employees specializaton is {Specialization}";
+
+        }
+    }
+
+    public class progam
+    {
+        public static void Main(string[] args)
+        {
+            Employees newEmployees = new Employees("Tod", 5);
+
+            Manager newManager = new Manager("jesse ", 15, 2);
+
+            engineer newspecial = new engineer("ben ", 10, "engineer");
+
+            Console.WriteLine(newspecial.ToString());
+
+            Console.WriteLine(newEmployees.ToString());
+
+            Console.WriteLine(newManager.ToString());
+        }
+
+    }
+}
