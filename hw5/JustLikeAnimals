@@ -1,0 +1,99 @@
+namespace JustLikeAnimals
+{
+    public class Animals
+    {
+        private string name;
+
+        public string Name
+        {
+            get {return this.name;}
+            set {this.name = value;}
+        
+        }
+
+        public Animals(string name)
+        {
+            this.name = Name;
+        
+        }
+
+        public virtual string noise()
+        {
+            return "some generic animal sound";
+        }            
+        
+        public override string ToString()
+        {
+
+            return $"the animals name is {Name}, the animals noise is {noise()}";
+        
+        
+        
+        }
+        
+        
+        
+        
+
+    }
+    public class Cat : Animals
+    { 
+        
+        public Cat(string Name)
+            : base(Name)
+        { }
+        public override string noise()
+        {
+            return "Meow ";
+
+        }
+        public override string ToString()
+        {
+
+            return $"the animals name is {Name}, the animals noise is {noise()}";
+
+
+        }
+    
+    
+    
+    
+    }
+    public class Dog : Animals
+    {
+
+        public Dog(string Name)
+            : base(Name) { }
+        public override string noise()
+        {
+            return "bark";
+        }
+        public override string ToString()
+        {
+            return $"the animals name is {Name}, the animals noise is {noise()}";
+        }
+
+    }
+    public class program
+    {
+        public static void Main()
+        {
+            Animals animal = new Animals("animal");
+
+            Cat cat = new Cat("cat");
+
+            Dog dog = new Dog("dog");
+
+            Console.WriteLine(animal.ToString());
+            Console.WriteLine(dog.ToString());
+            Console.WriteLine(cat.ToString());
+
+
+
+
+        }
+
+
+
+    }
+}
