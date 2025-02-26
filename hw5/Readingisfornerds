@@ -1,0 +1,124 @@
+namespace Readingisfornerds
+{
+    public class Book
+    {
+        private string title;
+        private string author;
+        private int yearpublished;
+
+        public string Title
+        {
+            get { return this.title; }
+            set { this.title = value; }
+        }
+
+        public string Author
+        {
+            get { return this.author; }
+            set { this.author = value; }
+
+        
+        }
+
+        public int Yearpublished
+        {
+            get { return this.yearpublished; }
+            set { this.yearpublished = value; }
+        
+        }
+
+        public Book(string Title, string Author, int Yearpublished)
+        {
+            this.title = Title;
+            this.author = Author;
+            this.yearpublished = Yearpublished;
+
+        }
+
+        public override string ToString()
+        {
+            return $"the title of the book {Title}, the author of the book is {Author}, the year the book was published {Yearpublished}";
+
+        }
+        
+    }
+    public class EBook : Book
+    {
+        private int filesize;
+
+        public int Filesize
+        {
+            get { return this.filesize; }
+            set { this.filesize = value; }
+        }
+
+        public EBook(string Title, string Author, int Yearpublished,int Filesize)
+            : base(Title, Author, Yearpublished)
+        {
+            this.filesize = Filesize;
+
+
+        }
+        public override string ToString()
+        {
+
+            return $"the title of the book {Title}, the author of the book is {Author}, the year the book was published {Yearpublished}, the file size of the book {Filesize} mb";
+
+
+        }
+
+
+
+
+
+
+    }
+    public class Printedbook : Book
+    {
+
+        private int pages;
+
+        public int Pages
+        {
+            get { return this.pages; }
+            set { this.pages = value; }
+        }
+        public Printedbook(string Title, string Author, int Yearpublished, int Pages)
+            :base (Title, Author, Yearpublished)
+        {
+
+            this.pages = Pages;
+
+        }
+        public override string ToString()
+        {
+
+            return $"the title of the book {Title}, the author of the book is {Author}, the year the book was published {Yearpublished}, the amount of pages the book has is {Pages}";
+
+        }
+
+    }
+    public class progam
+    {
+        public static void Main()
+        {
+            Book mybook = new Book("Being dumb", "judah", 2016);
+
+            EBook myebook = new EBook("edds world", "edd", 2004, 5);
+
+            Printedbook pbook = new Printedbook("yugioh zexals", "yuma", 2016, 206);
+
+            Console.WriteLine(mybook.ToString());
+            Console.WriteLine(myebook.ToString());
+            Console.WriteLine(pbook.ToString());
+
+
+
+        }
+
+
+
+
+
+    }
+}
